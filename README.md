@@ -12,7 +12,7 @@ Koristi **Commit–Reveal** mehanizam:
 
 Na ovaj način postiže se:
  Tajnost glasova do kraja glasanja  
-Integritet podataka (nema mogućnosti promene)  
+ Integritet podataka (nema mogućnosti promene)  
  Transparentnost (svi mogu verifikovati rezultate)
 
 
@@ -29,7 +29,7 @@ Integritet podataka (nema mogućnosti promene)
 
 
 ## Struktura projekta
-
+```
 Blockchain-Dapp/
 │
 ├── contracts/
@@ -52,7 +52,7 @@ Blockchain-Dapp/
 ├── hardhat.config.js
 ├── package.json
 └── README.md
-
+```
 ## Instalacija i pokretanje
 
 ### Backend (Hardhat)
@@ -62,46 +62,34 @@ Instaliraj zavisnosti:
 npm install
 Kreiraj .env fajl u root direktorijumu:
 
-ini
-Copy code
 SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/<tvoj_api_key>
 PRIVATE_KEY=0x<tvoj_privatni_kljuc_sa_MetaMask_naloga>
 ETHERSCAN_API_KEY=<opciono>
 Zatim pokreni deploy:
 
 bash
-Copy code
 npx hardhat run scripts/deploy.js --network sepolia
-Zapamti adresu ugovora, npr.:
+Zapamti adresu ugovora.
 
-css
-Copy code
 VotingCommitReveal deployed to: 0xABCDEF...
 Frontend (React + Vite)
 Pređi u frontend folder i instaliraj zavisnosti:
 
 bash
-Copy code
 cd frontend
 npm install
 U fajlu frontend/.env upiši:
 
-ini
-Copy code
 VITE_VOTING_ADDRESS=0xABCDEF...    # adresa iz deploy-a
 VITE_SEPOLIA_RPC=https://sepolia.infura.io/v3/<tvoj_api_key>
 Pokreni aplikaciju:
 
 bash
-Copy code
 npm run dev
 Aplikacija će biti dostupna na:
-
-arduino
-Copy code
 http://localhost:5173
  Uputstvo za glasanje
- Account 1 – Administrator(Samdra)
+ Account 1 – Administrator(Sandra)
 Poveži MetaMask (Account 1)
 
 U polje “Adresa glasača” unesi adresu Account 2
@@ -132,10 +120,8 @@ Faza	Opis
 Kada svi glasači završe reveal:
 
 Admin klikne → Završeno
-
 Klikne Objavi rezultate
-
-Rezultati se prikazuju u sekciji “📊 Rezultati”
+Rezultati se prikazuju u sekciji “Rezultati”
 
 Sigurnosni mehanizmi
 Nema mogućnosti duplog glasa (jedan commit po glasaču)
@@ -149,9 +135,6 @@ Transparentnost – svako može proveriti glasove i rezultate
 Kratko objašnjenje commit–reveal šeme
 Commit:
 Glasač izračunava hash:
-
-scss
-Copy code
 keccak256(abi.encodePacked(option, salt, voter))
 Taj hash se čuva u blockchainu bez otkrivanja stvarnog izbora.
 
@@ -161,13 +144,7 @@ Ako da — glas se računa.
 
 Testiranje
 Pokreni testove ugovora:
-
-bash
-Copy code
 npx hardhat test
-Github
-Projekat je urađen za predmet Kriptografija.
-Na GitHub repozitorijum dodati profesora milancabarkapa kao saradnika.
 
 English summary
 Blockchain Voting DApp built on Ethereum Sepolia using Solidity, Hardhat, and React.
